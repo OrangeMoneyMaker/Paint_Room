@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  height: 100vh;
+  max-width: 100wh;
+  width: 100wv;
+  background-color: #f6f6f6;
+}
+
+.app > .header {
+  background-color: #bbffd1;
+  border: 1px solid #75ffa2;
+}
