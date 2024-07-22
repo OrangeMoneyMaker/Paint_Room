@@ -57,6 +57,7 @@ class UserService {
         const user = await UserModel.findOne({ email: userData.data.email });
         const userDto = new UserDto(user);
         const tokens = tokenService.generateToken({ ...userDto });
+        console.log(tokens);
         await tokenService.saveToken(userDto.id, tokens.refresh_token);
         return {
             ...tokens,

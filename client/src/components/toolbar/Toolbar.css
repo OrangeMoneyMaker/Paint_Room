@@ -1,0 +1,44 @@
+.toolbar {
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0px 3px 5px gray;
+}
+
+.toolbar__btn {
+  height: 25px;
+  width: 25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-size: cover;
+  margin-left: 10px;
+}
+.toolbar .brush {
+  background: url("../../assets/svg/brush.svg") no-repeat center center;
+}
+.toolbar .undo {
+  margin-left: auto;
+  background: url("../../assets/svg/undo.svg") no-repeat center center;
+}
+.toolbar .redo {
+  background: url("../../assets/svg/redo.svg") no-repeat center center;
+}
+.toolbar .line {
+  background: url("../../assets/svg/line.svg") no-repeat center center;
+}
+.toolbar .circle {
+  background: url("../../assets/svg/circle.svg") no-repeat center center;
+}
+.toolbar .eraser {
+  background: url("../../assets/svg/eraser.svg") no-repeat center center;
+}
+.toolbar .rect {
+  background: url("../../assets/svg/rect.svg") no-repeat center center;
+}
+.toolbar .save {
+  margin-right: 10px;
+  background: url("../../assets/svg/save.svg") no-repeat center center;
+}/*# sourceMappingURL=Toolbar.css.map */

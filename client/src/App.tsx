@@ -8,12 +8,20 @@ import PaintBoard from "./pages/PaintBoard";
 import { SingUp } from "./pages/SingUp";
 import { Header } from "./pages/Header";
 import { Loading } from "./components/Loading";
+import { ViewPrints } from "./pages/ViewPrints";
 
 function App() {
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      userStore.checkAuth();
-    }
+    let timer: any;
+    timer = setTimeout(() => {
+      if (localStorage.getItem("token")) {
+        userStore.checkAuth();
+      }
+    }, 0);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
   if (userStore.isLoading) {
     return <Loading />;
@@ -52,7 +60,8 @@ function App() {
                 <Navigate to={`/`} replace={false} />
               )
             }
-          ></Route>
+          />
+          <Route path="/ViewPrints" element={<ViewPrints />} />
           <Route
             path="/print/:id"
             element={userStore.isAuth ? <PaintBoard /> : null}

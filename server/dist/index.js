@@ -9,19 +9,11 @@ import errorMiddlewares from "./middlewares/error-middlewares.js";
 import cors from 'cors';
 const app = express();
 const server = http.createServer(app);
-let whitelist = ['http://localhost:3000', '*'];
-let corsOptions = {
-    origin: (origin, callback) => {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true);
-        }
-        else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }, credentials: true
-};
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL
+}));
 app.use(cookieParser());
 app.use("/api", authRouter);
 app.use(errorMiddlewares);

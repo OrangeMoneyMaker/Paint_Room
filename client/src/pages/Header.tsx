@@ -18,8 +18,9 @@ export const Header = () => {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href={`/print/f${(+new Date()).toString()}`}>
-              Print
+              Printing
             </Nav.Link>
+            <Nav.Link href={`/ViewPrints`}>View prints</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

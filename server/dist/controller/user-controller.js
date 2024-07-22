@@ -34,7 +34,6 @@ class UserController {
             let { refreshToken } = req.cookies;
             const deleteToken = await userService.logout(refreshToken);
             res.clearCookie("refreshToken");
-            //res.redirect(process.env.CLIENT_URL);
             return res.json(deleteToken);
         }
         catch (e) {
@@ -45,8 +44,9 @@ class UserController {
     async refresh(req, res, next) {
         try {
             const { refreshToken } = req.cookies;
-            const data = await userService.refresh(refreshToken);
-            return res.json(data);
+            const userData = await userService.refresh(refreshToken);
+            res.cookie("refreshToken", userData.refresh_token, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            return res.json(userData);
         }
         catch (e) {
             next(e);
@@ -55,7 +55,7 @@ class UserController {
     async activate(req, res, next) {
         try {
             userService.activate(req.params.link);
-            res.redirect("https://www.google.com/");
+            res.redirect(process.env.CLIENT_URL);
         }
         catch (e) {
             next(e);
